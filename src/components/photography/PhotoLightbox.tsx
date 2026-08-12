@@ -63,6 +63,7 @@ export function PhotoLightbox({
           src={photo.image}
           alt={photo.title}
           fill
+          sizes="100vw"
           className="object-contain"
           priority
         />
