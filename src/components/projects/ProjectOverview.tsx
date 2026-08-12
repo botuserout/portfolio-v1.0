@@ -1,4 +1,5 @@
 import { type Project } from "@/lib/constants";
+import { PearlButton } from "@/components/ui/pearl-button";
 
 interface ProjectOverviewProps {
   project: Project;
@@ -39,6 +40,17 @@ export function ProjectOverview({ project }: ProjectOverviewProps) {
               ))}
             </div>
           </div>
+
+          {project.link && (
+            <div className="pt-4">
+              <PearlButton
+                href={project.link}
+                size="sm"
+                label="VIEW REPOSITORY / LIVE"
+                data-cursor="pointer"
+              />
+            </div>
+          )}
         </div>
 
         {/* Right Column: Problem & Solution Editorial */}

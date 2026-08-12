@@ -5,6 +5,7 @@ import Link from "next/link";
 import { IDENTITY, NAV_LINKS } from "@/lib/constants";
 import { gsap } from "gsap";
 import { EASE } from "@/lib/animations";
+import { PearlButton } from "@/components/ui/pearl-button";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -150,15 +151,12 @@ export function Navigation() {
 
           {/* ── 3. RIGHT: CTA & Availability Status ── */}
           <div className="hidden sm:flex items-center gap-3 shrink-0">
-            <a
+            <PearlButton
               href="#contact"
+              size="sm"
+              label="GET IN TOUCH"
               data-cursor="pointer"
-              style={{ fontFamily: "'DM Mono', monospace" }}
-              className="flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#C8FF3D] text-[#080808] text-[11px] uppercase tracking-[0.14em] font-bold hover:shadow-[0_0_24px_rgba(200,255,61,0.45)] hover:scale-105 transition-all duration-300"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#080808] animate-pulse" />
-              <span>Get in Touch</span>
-            </a>
+            />
           </div>
 
           {/* ── MOBILE: Hamburger Toggle ── */}

@@ -109,15 +109,15 @@ export function Hero() {
         {/* Subtitle / Intro tagline */}
         <div
           ref={subtitleRef}
-          className="mt-8 sm:mt-12 max-w-xl flex flex-col gap-2"
+          className="mt-8 sm:mt-12 max-w-xl flex flex-col gap-2.5"
         >
-          <p className="text-body-lg text-muted font-normal">
-            {IDENTITY.tagline}
+          <p className="text-body-lg text-text/90 font-normal italic tracking-wide">
+            &ldquo;{IDENTITY.tagline}&rdquo;
           </p>
-          <div className="flex items-center gap-4 text-mono text-xs text-dim">
-            <span>COMPUTER SCIENCE STUDENT</span>
+          <div className="flex items-center gap-3 text-mono text-xs text-dim">
+            <span>PHILOSOPHY // MOTTO</span>
             <span>•</span>
-            <span>BUILDER</span>
+            <span className="text-accent uppercase tracking-widest">{IDENTITY.name}</span>
           </div>
         </div>
       </div>

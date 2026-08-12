@@ -5,6 +5,7 @@ import Link from "next/link";
 import { PHOTOGRAPHY_ITEMS, type PhotoItem } from "@/lib/photography-data";
 import { PhotoCard } from "@/components/photography/PhotoCard";
 import { PhotoLightbox } from "@/components/photography/PhotoLightbox";
+import { PearlButton } from "@/components/ui/pearl-button";
 
 const CATEGORIES = ["ALL", "Cinematic", "Street", "Urban", "Portrait", "Experimental"] as const;
 
@@ -41,14 +42,14 @@ export default function PhotographyPage() {
       <div className="container-main flex flex-col gap-16">
         {/* Header Navigation & Title */}
         <div className="flex flex-col gap-8 border-b border-white/10 pb-12">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-mono text-xs text-muted hover:text-accent transition-colors w-fit"
-            data-cursor="pointer"
-          >
-            <span>←</span>
-            <span>BACK TO HOME</span>
-          </Link>
+          <div className="w-fit">
+            <PearlButton
+              href="/"
+              size="sm"
+              label="← BACK TO HOME"
+              data-cursor="pointer"
+            />
+          </div>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>

@@ -4,7 +4,7 @@ export const IDENTITY = {
   name: "Botuserout",
   handle: "botuserout",
   title: "Software Engineer & Creative Developer",
-  tagline: "Computer Science Student · Full-Stack & AI Systems Builder",
+  tagline: "Shoot for the moon; even if you miss, you'll land among the stars",
   location: "Ahmedabad, Gujarat, India",
   phone: "+91 9664969994",
   email: "jenarakeshku@gmail.com",

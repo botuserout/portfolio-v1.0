@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { IDENTITY, MARQUEE_FOOTER, SECTION_IDS } from "@/lib/constants";
 import { Marquee } from "@/components/ui/Marquee";
+import { PearlButton } from "@/components/ui/pearl-button";
 
 export function Footer() {
   const scrollToTop = () => {
@@ -34,14 +35,14 @@ export function Footer() {
             {IDENTITY.name}
           </h2>
 
-          <button
-            onClick={scrollToTop}
-            className="hidden sm:inline-flex items-center gap-2 text-mono text-xs text-muted hover:text-accent border border-white/20 hover:border-accent px-4 py-2 rounded-full transition-colors mb-2"
-            data-cursor="pointer"
-          >
-            <span>BACK TO TOP</span>
-            <span>↑</span>
-          </button>
+          <div className="hidden sm:block mb-2">
+            <PearlButton
+              onClick={scrollToTop}
+              size="sm"
+              label="BACK TO TOP ↑"
+              data-cursor="pointer"
+            />
+          </div>
         </div>
 
         {/* Footer Meta Row */}

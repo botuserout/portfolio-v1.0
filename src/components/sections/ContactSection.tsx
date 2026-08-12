@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { IDENTITY, SECTION_IDS, SOCIAL_LINKS } from "@/lib/constants";
 import { useMagneticEffect } from "@/hooks/useMagneticEffect";
+import { PearlButton } from "@/components/ui/pearl-button";
 
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -43,7 +44,7 @@ export function ContactSection() {
             </p>
           </div>
 
-          {/* Interactive Copy Email Button */}
+          {/* Interactive Copy & Direct Email Buttons */}
           <div className="md:col-span-4 flex flex-col items-start md:items-end gap-4">
             <button
               ref={copyBtnRef as unknown as React.RefObject<HTMLButtonElement>}
@@ -58,6 +59,15 @@ export function ContactSection() {
                 {copied ? "COPIED TO CLIPBOARD!" : IDENTITY.email}
               </span>
             </button>
+
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+              <PearlButton
+                href={`mailto:${IDENTITY.email}`}
+                size="md"
+                label="DIRECT EMAIL"
+                data-cursor="pointer"
+              />
+            </div>
           </div>
         </div>
 
