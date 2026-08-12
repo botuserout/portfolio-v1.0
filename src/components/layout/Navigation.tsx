@@ -87,46 +87,46 @@ export function Navigation() {
         ref={navRef}
         className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-500 ${
           isScrolled
-            ? "py-3 bg-[#080808]/90 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-            : "py-5 bg-gradient-to-b from-[#080808]/90 via-[#080808]/60 to-transparent backdrop-blur-sm"
+            ? "py-4 bg-[#080808]/92 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
+            : "py-6 sm:py-7 bg-gradient-to-b from-[#080808]/95 via-[#080808]/70 to-transparent backdrop-blur-md"
         }`}
         style={{ opacity: 0 }}
       >
-        <div className="container-main flex items-center justify-between gap-4">
+        <div className="container-main flex items-center justify-between gap-6">
 
           {/* ── 1. LEFT: Identity / Brand ── */}
           <Link
             href="/"
-            className="flex items-center gap-3 group shrink-0"
+            className="flex items-center gap-3.5 group shrink-0"
             data-cursor="pointer"
             aria-label="Go to homepage"
           >
             {/* Status Beacon */}
-            <span className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 group-hover:border-[#C8FF3D]/40 transition-colors">
-              <span className="absolute w-4 h-4 rounded-full bg-[#C8FF3D]/20 animate-ping" />
-              <span className="relative w-2 h-2 rounded-full bg-[#C8FF3D] shadow-[0_0_8px_#C8FF3D]" />
+            <span className="relative flex items-center justify-center w-9 h-9 rounded-full bg-white/[0.05] border border-white/15 group-hover:border-[#C8FF3D]/50 transition-colors">
+              <span className="absolute w-5 h-5 rounded-full bg-[#C8FF3D]/25 animate-ping" />
+              <span className="relative w-2.5 h-2.5 rounded-full bg-[#C8FF3D] shadow-[0_0_10px_#C8FF3D]" />
             </span>
 
             {/* Name + Details */}
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-0.5">
               <span
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                className="text-xs sm:text-sm font-bold text-[#F4F4F0] uppercase tracking-[0.14em] group-hover:text-[#C8FF3D] transition-colors"
+                className="text-sm sm:text-base font-bold text-[#F4F4F0] uppercase tracking-[0.16em] group-hover:text-[#C8FF3D] transition-colors"
               >
                 {IDENTITY.name}
               </span>
               <span
                 style={{ fontFamily: "'DM Mono', monospace" }}
-                className="text-[10px] text-[#8A8A86] tracking-wider hidden sm:block"
+                className="text-[11px] text-[#8A8A86] tracking-wider hidden sm:block"
               >
                 {IDENTITY.location}
               </span>
             </div>
           </Link>
 
-          {/* ── 2. CENTER: Floating Pill Navigation Dock ── */}
+          {/* ── 2. CENTER: Large Floating Pill Navigation Dock with Generous Spacing ── */}
           <nav
-            className="hidden md:flex items-center bg-white/[0.05] hover:bg-white/[0.07] border border-white/10 rounded-full px-2 py-1.5 backdrop-blur-md transition-all duration-300 shadow-[0_2px_20px_rgba(0,0,0,0.3)]"
+            className="hidden md:flex items-center gap-2 lg:gap-3 bg-white/[0.06] hover:bg-white/[0.08] border border-white/15 rounded-full px-3.5 py-2 backdrop-blur-2xl transition-all duration-300 shadow-[0_4px_28px_rgba(0,0,0,0.45)]"
             aria-label="Primary navigation"
           >
             {NAV_LINKS.map((link) => {
@@ -137,10 +137,10 @@ export function Navigation() {
                   href={link.href}
                   data-cursor="pointer"
                   style={{ fontFamily: "'DM Mono', monospace" }}
-                  className={`relative px-4 py-1.5 text-[11px] uppercase tracking-[0.12em] font-medium rounded-full transition-all duration-300 ${
+                  className={`relative px-4 lg:px-5 py-2 text-xs lg:text-[13px] uppercase tracking-[0.14em] font-medium rounded-full transition-all duration-300 ${
                     isActive
-                      ? "text-[#080808] bg-[#C8FF3D] font-semibold shadow-[0_0_12px_rgba(200,255,61,0.4)]"
-                      : "text-[#8A8A86] hover:text-[#F4F4F0] hover:bg-white/[0.06]"
+                      ? "text-[#080808] bg-[#C8FF3D] font-bold shadow-[0_0_16px_rgba(200,255,61,0.5)] scale-105"
+                      : "text-[#A0A09C] hover:text-[#FFFFFF] hover:bg-white/[0.08]"
                   }`}
                 >
                   {link.label}
@@ -153,7 +153,7 @@ export function Navigation() {
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             <PearlButton
               href="#contact"
-              size="sm"
+              size="md"
               label="GET IN TOUCH"
               data-cursor="pointer"
             />
@@ -162,13 +162,13 @@ export function Navigation() {
           {/* ── MOBILE: Hamburger Toggle ── */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 text-[#F4F4F0] hover:text-[#C8FF3D] hover:border-[#C8FF3D]/40 transition-colors"
+            className="md:hidden flex items-center justify-center w-11 h-11 rounded-full bg-white/[0.06] border border-white/15 text-[#F4F4F0] hover:text-[#C8FF3D] hover:border-[#C8FF3D]/50 transition-colors"
             aria-label="Toggle Navigation"
           >
-            <div className="flex flex-col gap-[5px] items-center justify-center w-5">
+            <div className="flex flex-col gap-1.5 items-center justify-center w-5">
               <span
                 className={`block w-5 h-[1.5px] bg-current transition-all duration-300 origin-center ${
-                  mobileMenuOpen ? "rotate-45 translate-y-[6.5px]" : ""
+                  mobileMenuOpen ? "rotate-45 translate-y-[7.5px]" : ""
                 }`}
               />
               <span
@@ -178,7 +178,7 @@ export function Navigation() {
               />
               <span
                 className={`block w-5 h-[1.5px] bg-current transition-all duration-300 origin-center ${
-                  mobileMenuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""
+                  mobileMenuOpen ? "-rotate-45 -translate-y-[7.5px]" : ""
                 }`}
               />
             </div>

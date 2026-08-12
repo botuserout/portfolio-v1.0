@@ -72,9 +72,9 @@ export function About() {
         </div>
 
         {/* 12-Column Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
           {/* Left Column: Image with B&W to Color Transition */}
-          <div className="md:col-span-5 h-[460px] sm:h-[540px] rounded-lg overflow-hidden border border-white/10 relative group bg-surface">
+          <div className="md:col-span-5 h-[480px] sm:h-[580px] rounded-2xl overflow-hidden border border-white/15 relative group bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
             <Image
               ref={imageRef}
               src="/images/photography/remove_the_background_and_not__1.jpg"
@@ -84,10 +84,17 @@ export function About() {
               className="object-cover transition-filter duration-700"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center text-mono text-xs text-muted">
-              <span>[ KINETIC DEVELOPER PERSONA ]</span>
-              <span className="text-accent">2026</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent pointer-events-none" />
+            
+            {/* Overlay badge with rider telemetry */}
+            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end text-mono text-xs">
+              <div className="flex flex-col gap-1 bg-black/60 backdrop-blur-md px-3 py-2 rounded-lg border border-white/10">
+                <span className="text-[10px] text-muted">[ MOTORCYCLE NERD & RIDER ]</span>
+                <span className="text-accent text-[11px] font-bold">DISCIPLINE: APEX VELOCITY</span>
+              </div>
+              <span className="text-white/60 font-mono text-[10px] bg-black/60 backdrop-blur-md px-2.5 py-2 rounded-lg border border-white/10">
+                2026 // ON ROAD
+              </span>
             </div>
           </div>
 
@@ -96,25 +103,58 @@ export function About() {
             <h2 className="text-display-lg font-medium text-text uppercase leading-snug">
               I AM A <span className="text-accent">COMPUTER SCIENCE</span>{" "}
               STUDENT WHO BUILDS SOFTWARE, EXPERIMENTS WITH{" "}
-              <span className="text-accent">AI</span>, AND CARES DEEPLY ABOUT HOW{" "}
-              <span className="text-accent">DIGITAL PRODUCTS</span> FEEL.
+              <span className="text-accent">AI</span>, AND LIVES FOR THE RUSH OF{" "}
+              <span className="text-accent">TWO WHEELS</span>.
             </h2>
 
             <p className="text-body-lg text-muted">
               {IDENTITY.summary}
             </p>
 
-            {/* Education Box */}
-            <div className="bg-surface p-6 rounded-lg border border-white/10 flex flex-col gap-2 mt-4">
-              <span className="text-mono text-xs text-accent uppercase">
-                EDUCATION CREDENTIALS
-              </span>
-              <h3 className="text-display-md font-bold text-text">
-                B.Tech in Computer Science & Engineering
-              </h3>
-              <p className="text-mono text-xs text-muted">
-                Indus Institute of Technology and Engineering, Ahmedabad (2024 – 2027)
-              </p>
+            {/* Twin Credentials & Passion Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+              {/* Education Box */}
+              <div className="bg-surface/80 p-6 rounded-xl border border-white/10 flex flex-col justify-between gap-3">
+                <div className="flex flex-col gap-1">
+                  <span className="text-mono text-[10px] text-accent uppercase tracking-widest">
+                    [ ACADEMIC CREDENTIALS ]
+                  </span>
+                  <h3 className="text-base font-bold text-text mt-1">
+                    B.Tech in Computer Science
+                  </h3>
+                  <p className="text-mono text-[11px] text-muted">
+                    Indus Institute of Technology & Engineering (2024 – 2027)
+                  </p>
+                </div>
+                <div className="text-mono text-[10px] text-dim border-t border-white/10 pt-3">
+                  AHMEDABAD, GUJARAT, INDIA
+                </div>
+              </div>
+
+              {/* Motorcycle / Rider DNA Box */}
+              <div className="bg-surface/80 p-6 rounded-xl border border-[#C8FF3D]/20 hover:border-[#C8FF3D]/50 transition-colors flex flex-col justify-between gap-3 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-full blur-xl pointer-events-none" />
+                
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-mono text-[10px] text-accent uppercase tracking-widest">
+                      [ RIDER DNA // TELEMETRY ]
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                  </div>
+                  <h3 className="text-base font-bold text-text mt-1 flex items-center gap-2">
+                    Two-Wheel Enthusiast
+                  </h3>
+                  <p className="text-mono text-[11px] text-muted">
+                    Apex hunting, throttle precision & split-second highway flow state.
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between text-mono text-[10px] text-accent border-t border-white/10 pt-3">
+                  <span>THROTTLE DISCIPLINE</span>
+                  <span>100% FOCUS</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

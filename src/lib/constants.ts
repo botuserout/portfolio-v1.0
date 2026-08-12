@@ -15,7 +15,7 @@ export const IDENTITY = {
   instagram: "https://instagram.com/botuserout",
   resume: "/rakesh-jena-resume.pdf",
   summary:
-    "Fresh Computer Science graduate (B.Tech, 2027) with hands-on full-stack experience across web, desktop-adjacent, and AI-driven systems. Delivered 6+ production-grade applications spanning Spring Boot, Flask, Node.js, React, Firebase, and SQL Server. Google Cloud certified with strong fundamentals in data structures, OOP, and product-oriented engineering.",
+    "Fresh Computer Science graduate (B.Tech, 2027) with hands-on full-stack experience across web, desktop-adjacent, and AI-driven systems. Delivered 6+ production applications spanning Spring Boot, Flask, React, and SQL. Lifelong motorcycle enthusiast and open-road rider—bringing apex focus, throttle discipline, and split-second precision from two wheels into high-performance software architecture.",
 } as const;
 
 // ─── NAVIGATION ──────────────────────────────────────────────────────────────
@@ -335,9 +335,11 @@ export const MARQUEE_SKILLS = [
   "Python & Flask",
   "React & Next.js",
   "Isolation Forest ML",
+  "Two-Wheel Motorcycle Enthusiast",
   "Google Cloud Platform",
+  "Apex Velocity & Throttle Focus",
   "Firebase & SQL Server",
-  "Serverless Functions",
+  "High-Performance System Architecture",
   "REST API Engineering",
 ] as const;
 
