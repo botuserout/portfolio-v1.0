@@ -6,7 +6,7 @@ import { PHOTOGRAPHY_ITEMS, type PhotoItem } from "@/lib/photography-data";
 import { PhotoCard } from "@/components/photography/PhotoCard";
 import { PhotoLightbox } from "@/components/photography/PhotoLightbox";
 
-const CATEGORIES = ["ALL", "Cinematic", "Street", "Urban", "Portrait"] as const;
+const CATEGORIES = ["ALL", "Cinematic", "Street", "Urban", "Portrait", "Experimental"] as const;
 
 export default function PhotographyPage() {
   const [activeCategory, setActiveCategory] = useState<string>("ALL");
