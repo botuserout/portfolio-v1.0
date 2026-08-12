@@ -3,6 +3,8 @@ import { Introduction } from "@/components/sections/Introduction";
 import { SelectedWork } from "@/components/sections/work/SelectedWork";
 import { PhotographySection } from "@/components/sections/PhotographySection";
 import { Lab } from "@/components/sections/Lab";
+import { CertificationsSection } from "@/components/sections/CertificationsSection";
+import { About } from "@/components/sections/About";
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
       <SelectedWork />
       <PhotographySection />
       <Lab />
+      <CertificationsSection />
+      <About />
     </div>
   );
 }
