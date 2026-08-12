@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { PROJECTS } from "@/lib/constants";
+import { PROJECTS, IDENTITY } from "@/lib/constants";
 import { ProjectHero } from "@/components/projects/ProjectHero";
 import { ProjectOverview } from "@/components/projects/ProjectOverview";
 import { ProjectGallery } from "@/components/projects/ProjectGallery";
@@ -27,7 +27,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.name} — Rakesh Jena`,
+    title: `${project.name} — ${IDENTITY.name}`,
     description: project.description,
     openGraph: {
       title: `${project.name} — Case Study`,

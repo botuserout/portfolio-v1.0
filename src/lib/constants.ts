@@ -1,8 +1,8 @@
 // ─── RAKESH JENA — PORTFOLIO DATA & RESUME CONSTANTS ───────────────────────
 
 export const IDENTITY = {
-  name: "Rakesh Jena",
-  handle: "Botuserout",
+  name: "Botuserout",
+  handle: "botuserout",
   title: "Software Engineer & Creative Developer",
   tagline: "Computer Science Student · Full-Stack & AI Systems Builder",
   location: "Ahmedabad, Gujarat, India",
