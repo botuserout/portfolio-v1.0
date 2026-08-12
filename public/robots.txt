@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rakeshjena.dev/sitemap.xml
+
+# Disallow admin/private routes if any are added later
+Disallow: /api/
+
+# Crawl delay (optional, friendly for bots)
+Crawl-delay: 1
