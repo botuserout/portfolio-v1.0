@@ -1,26 +1,282 @@
+/* ─── FONTS ──────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+/* ─── TAILWIND v4 ────────────────────────────────────────────── */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── DESIGN TOKENS ──────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-background:   #080808;
+  --color-surface:      #111111;
+  --color-surface-2:    #151515;
+  --color-text:         #F4F4F0;
+  --color-muted:        #8A8A86;
+  --color-dim:          #6D6D69;
+  --color-border:       rgba(255, 255, 255, 0.12);
+  --color-accent:       #C8FF3D;
+  --color-accent-dim:   rgba(200, 255, 61, 0.15);
+
+  /* Fonts */
+  --font-display:  "Space Grotesk", sans-serif;
+  --font-body:     "Inter", sans-serif;
+  --font-mono:     "DM Mono", monospace;
+
+  /* Spacing */
+  --spacing-section: clamp(80px, 12vw, 160px);
+  --padding-x:       clamp(20px, 4vw, 72px);
+  --max-w:           1600px;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── BASE RESET ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #080808;
+  color: #F4F4F0;
+  font-family: "Inter", sans-serif;
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #080808;
+  color: #F4F4F0;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  cursor: none; /* custom cursor handles it */
 }
+
+/* Restore cursor on touch */
+@media (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* ─── SCROLLBAR ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 0; height: 0; }
+* { scrollbar-width: none; }
+
+/* ─── SELECTION ──────────────────────────────────────────────── */
+::selection {
+  background-color: #C8FF3D;
+  color: #080808;
+}
+
+/* ─── TYPOGRAPHY SCALE ───────────────────────────────────────── */
+
+/* Display — Hero level */
+.text-display-hero {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(4rem, 11vw, 12rem);
+  font-weight: 600;
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+}
+
+/* Display — Section level */
+.text-display-xl {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(3rem, 7vw, 8rem);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+/* Display — Large */
+.text-display-lg {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 4.5vw, 5rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* Display — Medium */
+.text-display-md {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* Label — Section markers */
+.text-label {
+  font-family: "DM Mono", monospace;
+  font-size: clamp(0.625rem, 0.85vw, 0.75rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8A8A86;
+}
+
+/* Mono — Technical metadata */
+.text-mono {
+  font-family: "DM Mono", monospace;
+  font-size: clamp(0.6875rem, 0.9vw, 0.8125rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+/* Body — Editorial */
+.text-body-lg {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #8A8A86;
+}
+
+/* Body — Standard */
+.text-body {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(0.875rem, 1.1vw, 1rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: #8A8A86;
+}
+
+/* ─── LAYOUT UTILITIES ───────────────────────────────────────── */
+.container-main {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--padding-x);
+}
+
+.section-padding {
+  padding-block: var(--spacing-section);
+}
+
+/* 12-column grid */
+.grid-main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(12px, 1.5vw, 24px);
+}
+
+/* ─── FILM GRAIN OVERLAY ─────────────────────────────────────── */
+.film-grain {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  animation: grain-shift 0.5s steps(1) infinite;
+}
+
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-3%, -4%); }
+  20%  { transform: translate(-6%, 2%); }
+  30%  { transform: translate(3%, -5%); }
+  40%  { transform: translate(-4%, 6%); }
+  50%  { transform: translate(-6%, -3%); }
+  60%  { transform: translate(4%, 2%); }
+  70%  { transform: translate(-2%, 5%); }
+  80%  { transform: translate(4%, -6%); }
+  90%  { transform: translate(2%, 4%); }
+  100% { transform: translate(-4%, -2%); }
+}
+
+/* ─── ACCENT UTILITIES ───────────────────────────────────────── */
+.accent { color: #C8FF3D; }
+.accent-bg { background-color: #C8FF3D; color: #080808; }
+.border-subtle { border: 1px solid rgba(255, 255, 255, 0.12); }
+
+/* ─── CLIP PATH ANIMATION HELPERS ───────────────────────────── */
+.clip-hidden { clip-path: inset(0 0 100% 0); }
+.clip-visible { clip-path: inset(0 0 0% 0); }
+
+/* ─── HORIZONTAL RULE ────────────────────────────────────────── */
+.hr-subtle {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  width: 100%;
+}
+
+/* ─── IMAGE WRAPPER (clip reveal) ───────────────────────────── */
+.img-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-wrapper img,
+.img-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── MAGNETIC BUTTON ────────────────────────────────────────── */
+.magnetic {
+  display: inline-flex;
+  position: relative;
+  transition: transform 0.3s var(--ease-out-quart);
+}
+
+/* ─── HOVER UNDERLINE ────────────────────────────────────────── */
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.4s var(--ease-out-expo);
+}
+.hover-underline:hover::after { width: 100%; }
+
+/* ─── CUSTOM CURSOR HIDE on native ──────────────────────────── */
+a, button, [role="button"] { cursor: none; }
+@media (hover: none) {
+  a, button, [role="button"] { cursor: pointer; }
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .film-grain { animation: none; }
+}
+
+/* ─── FOCUS STYLES ───────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #C8FF3D;
+  outline-offset: 4px;
+}
+
+/* ─── NO-JS fallback ─────────────────────────────────────────── */
+.js-only { opacity: 0; }
+.js-loaded .js-only { opacity: 1; }
