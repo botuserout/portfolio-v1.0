@@ -80,6 +80,7 @@ export function About() {
               src="/images/photography/remove_the_background_and_not__1.jpg"
               alt={IDENTITY.name}
               fill
+              sizes="(max-width: 768px) 100vw, 42vw"
               className="object-cover transition-filter duration-700"
               priority
             />

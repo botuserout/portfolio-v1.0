@@ -51,6 +51,7 @@ export function PhotoCard({ photo, onSelect }: PhotoCardProps) {
         src={photo.image}
         alt={photo.title}
         fill
+        sizes="(max-width: 768px) 100vw, 33vw"
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
       />
 

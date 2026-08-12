@@ -19,7 +19,14 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { registerGSAP } from "./animations";
 
+// ─── REGISTER GSAP PLUGINS AT MODULE LEVEL ───────────────────────────────────
+// This ensures ScrollTrigger is registered before any component useEffect fires.
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 // ─── CONTEXT ─────────────────────────────────────────────────────────────────
+
 interface LenisContextValue {
   lenis: Lenis | null;
   scrollVelocity: number;
