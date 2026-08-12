@@ -129,11 +129,11 @@ export function Preloader({ onComplete }: { onComplete?: () => void }) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[99999] bg-[#080808] flex flex-col justify-between p-6 sm:p-12 overflow-hidden select-none"
+      className="fixed inset-0 z-[99999] bg-[#080808] flex flex-col justify-between items-center p-6 sm:p-12 overflow-hidden select-none w-screen h-screen"
       style={{ clipPath: "inset(0 0 0% 0)" }}
     >
       {/* Background Fullscreen Video with Dark Vignette */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none w-full h-full">
         <video
           ref={videoRef}
           src="/videos/preload.mp4"
@@ -155,8 +155,8 @@ export function Preloader({ onComplete }: { onComplete?: () => void }) {
         <div className="absolute inset-0 bg-radial from-transparent via-[#080808]/75 to-[#080808]" />
       </div>
 
-      {/* ── TOP HUD HEADER ── */}
-      <div className="relative z-10 flex items-center justify-between text-mono text-xs text-muted border-b border-white/10 pb-4">
+      {/* ── 1. TOP HUD HEADER (Full width) ── */}
+      <div className="relative z-10 w-full flex items-center justify-between text-mono text-xs text-muted border-b border-white/10 pb-4">
         <div className="flex items-center gap-3">
           <span className="relative flex items-center justify-center w-5 h-5">
             <span className="absolute w-4 h-4 rounded-full bg-accent/25 animate-ping" />
@@ -173,62 +173,64 @@ export function Preloader({ onComplete }: { onComplete?: () => void }) {
         </div>
       </div>
 
-      {/* ── CENTER HOLOGRAPHIC HUD CARD ── */}
-      <div
-        ref={cardRef}
-        className="relative z-10 max-w-lg w-full mx-auto my-auto p-8 sm:p-10 rounded-2xl bg-white/[0.03] border border-white/15 backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.6)] flex flex-col items-center text-center"
-      >
-        {/* Corner HUD Crosshairs */}
-        <span className="absolute -top-2 -left-2 text-accent text-xs font-mono select-none">+</span>
-        <span className="absolute -top-2 -right-2 text-accent text-xs font-mono select-none">+</span>
-        <span className="absolute -bottom-2 -left-2 text-accent text-xs font-mono select-none">+</span>
-        <span className="absolute -bottom-2 -right-2 text-accent text-xs font-mono select-none">+</span>
-
-        {/* Ambient Glow behind identity */}
-        <div className="absolute w-48 h-20 bg-accent/15 blur-3xl -top-4 pointer-events-none" />
-
-        {/* Identity Category Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.04] text-mono text-[9px] uppercase tracking-[0.2em] text-accent mb-5">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-          <span>CREATIVE ENGINEER & ARCHITECT</span>
-        </div>
-
-        {/* Main Title Name */}
-        <h1
-          ref={nameRef}
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-          className="text-4xl sm:text-6xl font-bold uppercase tracking-[0.14em] text-text mb-3 leading-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]"
-        >
-          {IDENTITY.name}
-        </h1>
-
-        {/* Large Mechanical Digital Counter */}
+      {/* ── 2. CENTER CONTAINER: Perfectly Centered In Viewport ── */}
+      <div className="relative z-10 flex-1 w-full flex items-center justify-center px-4 py-6">
         <div
-          ref={counterRef}
-          className="font-mono text-5xl sm:text-6xl font-light text-accent tracking-tighter my-3 drop-shadow-[0_0_20px_rgba(200,255,61,0.35)]"
+          ref={cardRef}
+          className="relative max-w-xl w-full p-8 sm:p-12 rounded-2xl bg-white/[0.04] border border-white/15 backdrop-blur-2xl shadow-[0_12px_50px_rgba(0,0,0,0.7)] flex flex-col items-center justify-center text-center"
         >
-          {String(counter).padStart(3, "0")}
-          <span className="text-2xl sm:text-3xl text-accent/80 font-normal ml-1">%</span>
-        </div>
+          {/* Corner HUD Crosshairs */}
+          <span className="absolute -top-2.5 -left-2.5 text-accent text-sm font-mono select-none font-bold">+</span>
+          <span className="absolute -top-2.5 -right-2.5 text-accent text-sm font-mono select-none font-bold">+</span>
+          <span className="absolute -bottom-2.5 -left-2.5 text-accent text-sm font-mono select-none font-bold">+</span>
+          <span className="absolute -bottom-2.5 -right-2.5 text-accent text-sm font-mono select-none font-bold">+</span>
 
-        {/* Dynamic Terminal Diagnostic Readout */}
-        <div
-          ref={logRef}
-          className="mt-4 text-mono text-[10px] text-muted tracking-wider flex items-center gap-2 h-5"
-        >
-          <span className="text-accent">&gt;</span>
-          <span className="text-white/80">{BOOT_LOGS[logIndex] || BOOT_LOGS[0]}</span>
-          <span className="w-1.5 h-3 bg-accent animate-pulse inline-block" />
+          {/* Ambient Glow behind identity */}
+          <div className="absolute w-64 h-24 bg-accent/15 blur-3xl -top-6 pointer-events-none" />
+
+          {/* Identity Category Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.05] text-mono text-[10px] uppercase tracking-[0.18em] text-accent mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            <span>CREATIVE ENGINEER & ARCHITECT</span>
+          </div>
+
+          {/* Main Title Name (Centered & Scaled) */}
+          <h1
+            ref={nameRef}
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            className="text-4xl sm:text-6xl font-bold uppercase tracking-[0.14em] pl-[0.14em] text-text mb-4 leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] text-center w-full"
+          >
+            {IDENTITY.name}
+          </h1>
+
+          {/* Large Mechanical Digital Counter */}
+          <div
+            ref={counterRef}
+            className="font-mono text-5xl sm:text-6xl font-light text-accent tracking-tight my-2 drop-shadow-[0_0_24px_rgba(200,255,61,0.4)] flex items-baseline justify-center"
+          >
+            <span>{String(counter).padStart(3, "0")}</span>
+            <span className="text-2xl sm:text-3xl text-accent/80 font-normal ml-1">%</span>
+          </div>
+
+          {/* Dynamic Terminal Diagnostic Readout */}
+          <div
+            ref={logRef}
+            className="mt-5 text-mono text-[11px] text-muted tracking-wider flex items-center justify-center gap-2 h-6 w-full"
+          >
+            <span className="text-accent font-bold">&gt;</span>
+            <span className="text-white/90">{BOOT_LOGS[logIndex] || BOOT_LOGS[0]}</span>
+            <span className="w-1.5 h-3.5 bg-accent animate-pulse inline-block" />
+          </div>
         </div>
       </div>
 
-      {/* ── BOTTOM PROGRESS BAR & READOUTS ── */}
-      <div className="relative z-10 w-full max-w-xl mx-auto flex flex-col gap-3">
+      {/* ── 3. BOTTOM PROGRESS BAR & READOUTS (Full width centered) ── */}
+      <div className="relative z-10 w-full max-w-xl flex flex-col gap-3">
         {/* Neon Progress Bar */}
-        <div className="w-full h-1.5 bg-white/10 overflow-hidden rounded-full p-[1px]">
+        <div className="w-full h-2 bg-white/10 overflow-hidden rounded-full p-[1px] border border-white/10">
           <div
             ref={progressBarRef}
-            className="h-full bg-gradient-to-r from-accent/70 via-accent to-accent rounded-full transition-all duration-300 ease-out shadow-[0_0_12px_rgba(200,255,61,0.5)]"
+            className="h-full bg-gradient-to-r from-accent/60 via-accent to-accent rounded-full transition-all duration-300 ease-out shadow-[0_0_16px_rgba(200,255,61,0.6)]"
             style={{ width: `${counter}%` }}
           />
         </div>
