@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/hero/Hero";
 import { Introduction } from "@/components/sections/Introduction";
 import { SelectedWork } from "@/components/sections/work/SelectedWork";
 import { PhotographySection } from "@/components/sections/PhotographySection";
+import { Lab } from "@/components/sections/Lab";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Introduction />
       <SelectedWork />
       <PhotographySection />
+      <Lab />
     </div>
   );
 }
