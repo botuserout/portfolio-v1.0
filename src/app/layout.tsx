@@ -78,13 +78,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://rakeshjena.dev",
   },
+  manifest: "/site.webmanifest",
   icons: {
     icon: [
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/icon.png", sizes: "any" },
-      { url: "/logo.png", type: "image/png" },
     ],
-    apple: [{ url: "/logo.png" }],
-    shortcut: "/icon.png",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon-32x32.png",
   },
   category: "technology",
 };
@@ -105,6 +109,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full bg-[#080808] text-[#F4F4F0] antialiased">
       <head>
+        {/* Favicon & Web Manifest Links */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+
         {/* Preconnect to Google Fonts for faster load */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
