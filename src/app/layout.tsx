@@ -5,6 +5,7 @@ import { CustomCursor } from "@/components/core/CustomCursor";
 import { FilmGrain } from "@/components/core/FilmGrain";
 import { Navigation } from "@/components/layout/Navigation";
 import { PageTransition } from "@/components/core/PageTransition";
+import { Preloader } from "@/components/core/Preloader";
 import { IDENTITY } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ export default function RootLayout({
     <html lang="en" className="h-full bg-[#080808] text-[#F4F4F0] antialiased">
       <body className="min-h-full flex flex-col relative bg-[#080808] text-[#F4F4F0] selection:bg-accent selection:text-background overflow-x-hidden">
         <LenisProvider>
+          <Preloader />
           <FilmGrain />
           <CustomCursor />
           <Navigation />
