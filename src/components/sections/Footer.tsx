@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { IDENTITY, MARQUEE_FOOTER, SECTION_IDS } from "@/lib/constants";
 import { Marquee } from "@/components/ui/Marquee";
 import { PearlButton } from "@/components/ui/pearl-button";
@@ -29,11 +30,22 @@ export function Footer() {
       />
 
       <div className="container-main flex flex-col gap-12 pb-12">
-        {/* Giant Footer Name Typography */}
-        <div className="flex justify-between items-end border-b border-white/10 pb-8">
-          <h2 className="text-display-hero font-bold uppercase text-text select-none leading-none tracking-tighter">
-            {IDENTITY.name}
-          </h2>
+        {/* Giant Footer Name Typography & Logo */}
+        <div className="flex justify-between items-end border-b border-white/10 pb-8 gap-4">
+          <div className="flex items-center gap-6">
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/[0.05] border border-white/15 p-2 flex items-center justify-center overflow-hidden">
+              <Image
+                src="/logo.png"
+                alt={IDENTITY.name}
+                width={64}
+                height={64}
+                className="object-contain filter drop-shadow-[0_0_12px_rgba(200,255,61,0.35)]"
+              />
+            </div>
+            <h2 className="text-display-hero font-bold uppercase text-text select-none leading-none tracking-tighter">
+              {IDENTITY.name}
+            </h2>
+          </div>
 
           <div className="hidden sm:block mb-2">
             <PearlButton

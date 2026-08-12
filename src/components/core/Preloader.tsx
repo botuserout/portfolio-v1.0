@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { IDENTITY } from "@/lib/constants";
 import { EASE } from "@/lib/animations";
@@ -188,8 +189,20 @@ export function Preloader({ onComplete }: { onComplete?: () => void }) {
           {/* Ambient Glow behind identity */}
           <div className="absolute w-64 h-24 bg-accent/15 blur-3xl -top-6 pointer-events-none" />
 
+          {/* Custom Futuristic Logo */}
+          <div className="relative w-16 h-16 sm:w-20 sm:h-20 mb-4 p-2 rounded-2xl bg-white/[0.05] border border-white/20 shadow-[0_0_24px_rgba(200,255,61,0.25)] flex items-center justify-center">
+            <Image
+              src="/logo.png"
+              alt={IDENTITY.name}
+              width={70}
+              height={70}
+              className="object-contain filter drop-shadow-[0_0_12px_rgba(200,255,61,0.4)]"
+              priority
+            />
+          </div>
+
           {/* Identity Category Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.05] text-mono text-[10px] uppercase tracking-[0.18em] text-accent mb-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/[0.05] text-mono text-[10px] uppercase tracking-[0.18em] text-accent mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             <span>CREATIVE ENGINEER & ARCHITECT</span>
           </div>

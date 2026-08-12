@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { IDENTITY, NAV_LINKS } from "@/lib/constants";
 import { gsap } from "gsap";
 import { EASE } from "@/lib/animations";
@@ -97,15 +98,21 @@ export function Navigation() {
           {/* ── 1. LEFT: Identity / Brand ── */}
           <Link
             href="/"
-            className="flex items-center gap-3.5 group shrink-0"
+            className="flex items-center gap-3 group shrink-0"
             data-cursor="pointer"
             aria-label="Go to homepage"
           >
-            {/* Status Beacon */}
-            <span className="relative flex items-center justify-center w-9 h-9 rounded-full bg-white/[0.05] border border-white/15 group-hover:border-[#C8FF3D]/50 transition-colors">
-              <span className="absolute w-5 h-5 rounded-full bg-[#C8FF3D]/25 animate-ping" />
-              <span className="relative w-2.5 h-2.5 rounded-full bg-[#C8FF3D] shadow-[0_0_10px_#C8FF3D]" />
-            </span>
+            {/* Custom Logo Emblem */}
+            <div className="relative w-10 h-10 rounded-xl bg-white/[0.05] border border-white/15 group-hover:border-[#C8FF3D]/50 transition-all p-1 flex items-center justify-center overflow-hidden">
+              <Image
+                src="/logo.png"
+                alt={IDENTITY.name}
+                width={36}
+                height={36}
+                className="object-contain filter drop-shadow-[0_0_8px_rgba(200,255,61,0.3)] group-hover:scale-110 transition-transform duration-300"
+                priority
+              />
+            </div>
 
             {/* Name + Details */}
             <div className="flex flex-col gap-0.5">

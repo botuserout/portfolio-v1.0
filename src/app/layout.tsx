@@ -78,6 +78,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://rakeshjena.dev",
   },
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "any" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    apple: [{ url: "/logo.png" }],
+    shortcut: "/icon.png",
+  },
   category: "technology",
 };
 
