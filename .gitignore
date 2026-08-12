@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large mirror & archive files
+website-mirror-complete/
+*.zip
+hts-log.txt
